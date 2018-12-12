@@ -145,7 +145,7 @@ void insert_case1(ARN tree){
 }
 
 void insert_case2(ARN tree){
-
+    return;
 }
 
 void insert_case3(ARN tree){
