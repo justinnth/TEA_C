@@ -4,9 +4,9 @@
 
 #include "redBlackTree.h"
 
-ARN create(void* item){
+ARN create(int item){
     if(item) {
-        ARN temp = (Node*) malloc(sizeof(Node*));
+        ARN temp = (Node*) malloc(sizeof(Node*) * 3 + sizeof(size_t));
         if(temp){
             temp->item = item;
             temp->color = BLACK;

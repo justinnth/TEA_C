@@ -11,7 +11,7 @@
 
 typedef struct node{
     enum {BLACK, RED} color;
-    void *item;
+    int item;
     struct node *left, *right, *parent;
 }Node;
 
@@ -20,7 +20,7 @@ typedef Node *pt_node;
 typedef pt_node ARN;
 
 // Méthodes
-ARN create(void* item);
+ARN create(int item);
 
 ARN parent(ARN tree);
 ARN grandparent(ARN tree);

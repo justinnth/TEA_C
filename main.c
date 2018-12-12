@@ -26,12 +26,12 @@ int menu(){
 }
 
 int main() {
-    ARN racine = create((void*) 25);
-    ARN ajout = create((void*) 15);
+    ARN racine = create(25);
+    ARN ajout = create(15);
 
     insert(racine, ajout);
 
-    switch (menu()){
+    switch (menu()) {
         case 1:
             affiche(racine);
             break;
