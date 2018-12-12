@@ -3,6 +3,7 @@
 //
 
 #include "redBlackTree.h"
+#include <assert.h>
 
 ARN create(int item){
     if(item) {
@@ -56,6 +57,8 @@ void rotate_left(ARN tree){
     ARN newTree = tree->right;
     ARN p = parent(tree);
 
+    assert(newTree != NULL);
+
     tree->right = newTree->left;
     newTree->left = tree;
     tree->parent = newTree;
@@ -74,6 +77,8 @@ void rotate_left(ARN tree){
 void rotate_right(ARN tree){
     ARN newTree = tree->left;
     ARN p = parent(tree);
+
+    assert(newTree != NULL);
 
     tree->left = newTree->right;
     newTree->right = tree;
@@ -144,9 +149,7 @@ void insert_case1(ARN tree){
         tree->color = BLACK;
 }
 
-void insert_case2(ARN tree){
-    return;
-}
+void insert_case2(ARN tree){ }
 
 void insert_case3(ARN tree){
     parent(tree)->color = BLACK;
