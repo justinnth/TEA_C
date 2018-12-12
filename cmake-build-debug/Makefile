@@ -56,6 +56,63 @@ CMAKE_BINARY_DIR = "/Users/justinnorth/Documents/Cours/S5/Structures de données
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -66,6 +123,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cpack --config ./CPackSourceConfig.cmake /Users/justinnorth/Documents/Cours/S5/Structures\ de\ données\ avancées/TEA_C/cmake-build-debug/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -123,6 +191,32 @@ TEA/fast:
 	$(MAKE) -f CMakeFiles/TEA.dir/build.make CMakeFiles/TEA.dir/build
 .PHONY : TEA/fast
 
+#=============================================================================
+# Target rules for targets named redBlackStatic
+
+# Build rule for target.
+redBlackStatic: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 redBlackStatic
+.PHONY : redBlackStatic
+
+# fast build rule for target.
+redBlackStatic/fast:
+	$(MAKE) -f CMakeFiles/redBlackStatic.dir/build.make CMakeFiles/redBlackStatic.dir/build
+.PHONY : redBlackStatic/fast
+
+#=============================================================================
+# Target rules for targets named .
+
+# Build rule for target.
+. : cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 .
+.PHONY : .
+
+# fast build rule for target.
+./fast:
+	$(MAKE) -f CMakeFiles/..dir/build.make CMakeFiles/..dir/build
+.PHONY : ./fast
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -157,6 +251,8 @@ redBlackTree.o: redBlackTree.c.o
 # target to build an object file
 redBlackTree.c.o:
 	$(MAKE) -f CMakeFiles/TEA.dir/build.make CMakeFiles/TEA.dir/redBlackTree.c.o
+	$(MAKE) -f CMakeFiles/redBlackStatic.dir/build.make CMakeFiles/redBlackStatic.dir/redBlackTree.c.o
+	$(MAKE) -f CMakeFiles/..dir/build.make CMakeFiles/..dir/redBlackTree.c.o
 .PHONY : redBlackTree.c.o
 
 redBlackTree.i: redBlackTree.c.i
@@ -166,6 +262,8 @@ redBlackTree.i: redBlackTree.c.i
 # target to preprocess a source file
 redBlackTree.c.i:
 	$(MAKE) -f CMakeFiles/TEA.dir/build.make CMakeFiles/TEA.dir/redBlackTree.c.i
+	$(MAKE) -f CMakeFiles/redBlackStatic.dir/build.make CMakeFiles/redBlackStatic.dir/redBlackTree.c.i
+	$(MAKE) -f CMakeFiles/..dir/build.make CMakeFiles/..dir/redBlackTree.c.i
 .PHONY : redBlackTree.c.i
 
 redBlackTree.s: redBlackTree.c.s
@@ -175,6 +273,8 @@ redBlackTree.s: redBlackTree.c.s
 # target to generate assembly for a file
 redBlackTree.c.s:
 	$(MAKE) -f CMakeFiles/TEA.dir/build.make CMakeFiles/TEA.dir/redBlackTree.c.s
+	$(MAKE) -f CMakeFiles/redBlackStatic.dir/build.make CMakeFiles/redBlackStatic.dir/redBlackTree.c.s
+	$(MAKE) -f CMakeFiles/..dir/build.make CMakeFiles/..dir/redBlackTree.c.s
 .PHONY : redBlackTree.c.s
 
 # Help Target
@@ -183,9 +283,17 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... install"
+	@echo "... list_install_components"
+	@echo "... package"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
+	@echo "... package_source"
 	@echo "... TEA"
+	@echo "... redBlackStatic"
+	@echo "... edit_cache"
+	@echo "... ."
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

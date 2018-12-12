@@ -94,6 +94,7 @@ TEA_EXTERNAL_OBJECTS =
 TEA: CMakeFiles/TEA.dir/main.c.o
 TEA: CMakeFiles/TEA.dir/redBlackTree.c.o
 TEA: CMakeFiles/TEA.dir/build.make
+TEA: lib..SOVERSION.dylib
 TEA: CMakeFiles/TEA.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/justinnorth/Documents/Cours/S5/Structures de données avancées/TEA_C/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable TEA"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TEA.dir/link.txt --verbose=$(VERBOSE)
