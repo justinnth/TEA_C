@@ -19,6 +19,7 @@ ARN create(int item){
             free(temp);
             temp = NULL;
         }
+        printf("Création d'un noeud\nValeur : %d - Couleur : BLACK", item);
         return temp;
     }
     return NULL;

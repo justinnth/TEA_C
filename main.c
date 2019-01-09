@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "redBlackTree.h"
+#include <time.h>
 
 void affiche(ARN tree){
     if(tree){
@@ -12,13 +13,16 @@ void affiche(ARN tree){
 int menu(){
     int choixMenu;
 
-    printf("--------------\n");
+    printf("\n\n--------------\n");
     printf("---- Menu ----\n");
     printf("--------------\n");
 
-    printf("1. Insertion\n");
-    printf("2. Suppression\n");
-    printf("3. Recherche\n");
+    printf("1. Créer arbre\n");
+    printf("2. Insérer valeur dans arbre\n");
+    printf("3. Suppression\n");
+    printf("4. Recherche\n");
+    printf("5. Afficher arbre\n");
+    printf("6. Quitter\n");
 
     scanf("%d", &choixMenu);
 
@@ -26,35 +30,41 @@ int menu(){
 }
 
 int main() {
-    ARN racine = create(25);
-    ARN ajout = create(15);
-    ARN ajout2 = create(35);
-    ARN ajout3 = create(20);
-    ARN ajout4 = create(22);
-    /*ARN ajout5 = create(10);
-    ARN ajout6 = create(22);
-    ARN ajout7 = create(30);*/
+    ARN racine;
+    ARN ajout;
 
-    insert(racine, ajout);
-    insert(racine, ajout2);
-    insert(racine, ajout3);
-    insert(racine, ajout4);
-    /*insert(racine, ajout5);
-    insert(racine, ajout6);
-    insert(racine, ajout7);*/
+    bool inMenu = true;
+    int item = 0;
 
-    switch (menu()) {
-        case 1:
-            affiche(racine);
-            break;
-        case 2:
-            printf("Suppression\n");
-            break;
-        case 3:
-            printf("Recherche\n");
-            break;
-        default:
-            printf("Retour\n");
+    srand(time(NULL));
+
+    while(inMenu){
+        item = rand() % 5000;
+
+        switch (menu()) {
+            case 1:
+                racine = create(item);
+                break;
+            case 2:
+                ajout = create(item);
+
+                insert(racine, ajout);
+                break;
+            case 3:
+                printf("Suppression\n");
+                break;
+            case 4:
+                printf("Recherche\n");
+                break;
+            case 5:
+                affiche(racine);
+                break;
+            case 6:
+                inMenu = false;
+                break;
+            default:
+                printf("Retour\n");
+        }
     }
 
     return 0;
