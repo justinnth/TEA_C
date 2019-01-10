@@ -6,14 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/justinnorth/Documents/Cours/S5/Structures de données avancées/TEA_C/main.c
-stdio.h
--
-redBlackTree.h
-/Users/justinnorth/Documents/Cours/S5/Structures de données avancées/TEA_C/redBlackTree.h
-time.h
--
-
 /Users/justinnorth/Documents/Cours/S5/Structures de données avancées/TEA_C/redBlackTree.c
 redBlackTree.h
 /Users/justinnorth/Documents/Cours/S5/Structures de données avancées/TEA_C/redBlackTree.h

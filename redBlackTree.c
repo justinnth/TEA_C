@@ -353,7 +353,10 @@ ARN recherche(ARN racine, int item){
                 tmp = tmp->right;
         }
     }
-    return tmp;
+    if(item == tmp->item)
+        return tmp;
+    else
+        return NULL;
 }
 
 /**

@@ -78,7 +78,7 @@ int main() {
                 scanf("%d", &idNoeud);
 
                 ARN trouve = recherche(racine, idNoeud);
-
+                affiche(trouve);
                 break;
             case 5:
                 affiche(racine);
