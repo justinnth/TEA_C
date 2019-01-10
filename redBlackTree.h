@@ -43,4 +43,17 @@ void insert_case5(ARN tree);
 void rotate_left(ARN tree);
 void rotate_right(ARN tree);
 
+void replace_node(ARN n, ARN enfant);
+void delete_one_child(ARN tree);
+void delete_case1(ARN tree);
+void delete_case2(ARN tree);
+void delete_case3(ARN tree);
+void delete_case4(ARN tree);
+void delete_case5(ARN tree);
+void delete_case6(ARN tree);
+
+ARN recherche(ARN racine, int item);
+
+void liberer(ARN tree);
+
 #endif //TEA_REDBLACKTREE_H

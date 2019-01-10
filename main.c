@@ -22,7 +22,8 @@ int menu(){
     printf("3. Suppression\n");
     printf("4. Recherche\n");
     printf("5. Afficher arbre\n");
-    printf("6. Quitter\n");
+    printf("6. Libération\n");
+    printf("7. Quitter\n");
 
     scanf("%d", &choixMenu);
 
@@ -30,42 +31,69 @@ int menu(){
 }
 
 int main() {
+    float temps;
+    clock_t t1, t2;
+
     ARN racine;
     ARN ajout;
 
     bool inMenu = true;
+
     int item = 0;
+
+    int nbNoeuds;
+    int idNoeud;
 
     srand(time(NULL));
 
     while(inMenu){
-        item = rand() % 5000;
-
         switch (menu()) {
             case 1:
+                item = rand() % 5000;
                 racine = create(item);
                 break;
             case 2:
-                ajout = create(item);
+                printf("Combien de noeuds désirez vous ?");
+                scanf("%d", &nbNoeuds);
 
-                insert(racine, ajout);
+                t1 = clock();
+
+                for (int i = 1; i < nbNoeuds; i++) {
+                    item = rand() % 5000;
+
+                    ajout = create(item);
+                    racine = insert(racine, ajout);
+                }
+
+                t2 = clock();
+                temps = (float)(t2-t1)/CLOCKS_PER_SEC;
+                printf("temps = %f\n", temps);
+
                 break;
             case 3:
                 printf("Suppression\n");
                 break;
             case 4:
-                printf("Recherche\n");
+                printf("Quel noeud cherchez vous?\n");
+                scanf("%d", &idNoeud);
+
+                ARN trouve = recherche(racine, idNoeud);
+
                 break;
             case 5:
                 affiche(racine);
                 break;
             case 6:
+                printf("Libération de l'espace mémoire de l'arbre\n");
+                liberer(racine);
+                break;
+            case 7:
                 inMenu = false;
+                printf("Fermeture du programme");
                 break;
             default:
                 printf("Retour\n");
         }
     }
-
     return 0;
 }
